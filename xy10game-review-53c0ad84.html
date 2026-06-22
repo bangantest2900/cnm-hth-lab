@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>澳洲幸运10 · 日常查询与参考</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f0f2f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: #1e2a3a;
+      padding: 2.5rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrapper {
+      max-width: 860px;
+      width: 100%;
+    }
+
+    /* 卡片通用设计 —— 细边框、柔和阴影、圆角 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e3e8ef;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2.2rem;
+      margin-bottom: 2.2rem;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+      transform: translateY(-2px);
+    }
+
+    /* 开场短句：柔和、留白 */
+    .opening-line {
+      font-size: 2.2rem;
+      font-weight: 350;
+      letter-spacing: 1px;
+      line-height: 1.35;
+      margin-bottom: 0.4rem;
+      color: #2c3e50;
+      border-left: 4px solid #90a4ae;
+      padding-left: 1.2rem;
+    }
+
+    .sub-mood {
+      font-size: 1rem;
+      color: #5b6f82;
+      margin-top: -0.2rem;
+      margin-bottom: 1.8rem;
+      font-weight: 350;
+    }
+
+    /* 承接段落 & 正文 */
+    .body-text {
+      font-size: 1.1rem;
+      color: #213141;
+      margin-bottom: 1.5rem;
+    }
+
+    .body-text a {
+      color: #3f5e7a;
+      text-decoration: none;
+      border-bottom: 1px dashed #b0c4d9;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .body-text a:hover {
+      border-bottom: 1px solid #3f5e7a;
+      color: #1b2a3a;
+    }
+
+    /* 特点列表：卡片里的小圆点 */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.8rem 0 0.6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem 1.6rem;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 1.8rem;
+      font-size: 1rem;
+      color: #1f2e3e;
+    }
+
+    .feature-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      top: -0.1rem;
+      font-size: 1.9rem;
+      line-height: 1;
+      color: #7f96ab;
+      font-weight: 400;
+    }
+
+    @media (max-width: 520px) {
+      .feature-list {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+    }
+
+    /* 场景区块 */
+    .scene-block {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem 2.2rem;
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    .scene-item {
+      flex: 1 1 200px;
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #e9edf2;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.01);
+    }
+
+    .scene-item h4 {
+      font-size: 1rem;
+      font-weight: 550;
+      margin-bottom: 0.5rem;
+      color: #2c4056;
+      letter-spacing: 0.3px;
+    }
+
+    .scene-item p {
+      font-size: 0.925rem;
+      color: #416177;
+      margin-bottom: 0.2rem;
+    }
+
+    /* 提示 / 温和结尾 */
+    .gentle-footer {
+      border-top: 1px solid #e4e9f0;
+      padding-top: 1.2rem;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .gentle-footer p {
+      font-size: 0.95rem;
+      color: #4e647a;
+    }
+
+    .gentle-footer a {
+      color: #2e4b64;
+      text-decoration: none;
+      border-bottom: 1px solid #cbd8e6;
+      transition: border 0.15s;
+    }
+
+    .gentle-footer a:hover {
+      border-bottom-color: #2e4b64;
+    }
+
+    /* 小字 */
+    .note {
+      font-size: 0.9rem;
+      color: #5d7388;
+      background: #f2f5f9;
+      border-radius: 40px;
+      padding: 0.2rem 1rem;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #dce2eb;
+      margin: 1rem 0 1.8rem;
+      opacity: 0.6;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.5rem 0.8rem;
+      }
+      .card {
+        padding: 1.6rem 1.2rem;
+        border-radius: 16px;
+      }
+      .opening-line {
+        font-size: 1.8rem;
+        padding-left: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- 开场短句 + 柔和语气 -->
+  <div class="card">
+    <div class="opening-line">有时只是想知道今晚的走势</div>
+    <div class="sub-mood">一份安静对照的参考 · 日常翻阅</div>
+    <p class="body-text">
+      每天打开页面，看看号码的排列与节奏，已经成了许多人的小习惯。不需要理由，也不为了什么预测，仅仅是一种温和的观察——就像翻开一本旧的笔记本，浏览那些熟悉的数字轨迹。<a href="https://xy10game.com">澳洲幸运10</a> 的日常数据与历史序列，恰好提供了这样一份可以随时翻阅的素材。
+    </p>
+    <p class="body-text" style="margin-top: -0.4rem;">
+      偶尔和朋友聊起近期的冷热号，或者独自在夜里对照几期的和值变化，这件事本身就有一种朴素的趣味。没有喧哗，也不需要结论，只是安安静静地看一会儿。
+    </p>
+  </div>
+
+  <!-- 承接段落 + 特点列表 (温和列举) -->
+  <div class="card">
+    <h3 style="font-weight: 450; font-size: 1.3rem; color: #253544; margin-bottom: 0.25rem;">翻阅时常常留意的几件事</h3>
+    <p style="color: #4b6177; margin-bottom: 0.3rem; font-size: 0.98rem;">不是方法，只是视角</p>
+    <ul class="feature-list">
+      <li>号码出现的间隔与频率</li>
+      <li>连续几期的奇偶分布</li>
+      <li>大小区间的摆动节奏</li>
+      <li>和值在十天内的波动</li>
+      <li>前后场号码的关联</li>
+      <li>重复数字的间隔周期</li>
+    </ul>
+    <p style="margin-top: 1.4rem; font-size: 0.95rem; color: #456076; border-left: 2px solid #cbd7e6; padding-left: 0.9rem;">
+      这些观察本身并不复杂，但每次对照时，总会发现一些细微的变化。就像读一段熟悉的文字，每次重读都会注意到之前忽略的标点。
+    </p>
+  </div>
+
+  <!-- 场景、延伸阅读 — 用三个小卡片 -->
+  <div class="card">
+    <h3 style="font-weight: 420; font-size: 1.25rem; color: #1c3044; margin-bottom: 1.2rem;">适合安静对照的场景</h3>
+    <div class="scene-block">
+      <div class="scene-item">
+        <h4>☕ 午后的间隙</h4>
+        <p>泡杯茶，打开页面，随手翻翻近五期的号码排列。不赶时间，只看节奏。</p>
+      </div>
+      <div class="scene-item">
+        <h4>📋 做笔记时</h4>
+        <p>把看过的走势简单记在纸上，偶尔翻出之前的记录做对比，会发现一些有趣的循环。</p>
+      </div>
+      <div class="scene-item">
+        <h4>🌙 睡前翻阅</h4>
+        <p>在一天将要结束时，安静地看几组号码，让思绪从繁杂中慢慢沉淀下来。</p>
+      </div>
+    </div>
+    <p style="margin-top: 1.2rem; font-size: 0.95rem; color: #45647c;">
+      这些场景的共同点——没有目的，只有观察。你不需要成为专家，只需要做一个安静的读者。
+    </p>
+  </div>
+
+  <!-- 温和结尾 / FAQ 摘要风格 但更口语化 -->
+  <div class="card">
+    <h3 style="font-weight: 400; font-size: 1.2rem; color: #253d52; margin-bottom: 0.8rem;">一些常被问起的小事</h3>
+
+    <div style="margin-bottom: 1rem;">
+      <p style="font-weight: 470; color: #1f3447;">“每天看走势，真的能找到规律吗？”</p>
+      <p style="color: #416077; margin-top: 0.2rem;">规律这个词可能太重了。更准确地说，是找到一种属于自己的阅读节奏。号码本身没有记忆，但观察的过程会让人平静。</p>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <p style="font-weight: 470; color: #1f3447;">“需要持续记录很久才有意义吗？”</p>
+      <p style="color: #416077; margin-top: 0.2rem;">看多久都可以。有人只翻最近三天，有人喜欢看过去二十期。没有标准，舒服就好。</p>
+    </div>
+
+    <div>
+      <p style="font-weight: 470; color: #1f3447;">“有什么推荐的起点吗？”</p>
+      <p style="color: #416077; margin-top: 0.2rem;">从最新一期开始，往前倒着看十期。不看任何分析，只用自己的眼睛感受数字的流动。</p>
+    </div>
+
+    <hr>
+
+    <!-- 温和结尾 + 链接自然出现 -->
+    <div class="gentle-footer">
+      <p>如果你也想找一份安静的数字读物，可以时不时来看看 <a href="https://xy10game.com">澳洲幸运10</a> 的页面。没有推送，没有弹窗，只有号码本身。</p>
+      <span class="note">保持轻松 · 随意翻阅</span>
+    </div>
+    <p style="font-size: 0.85rem; color: #6a8199; margin-top: 1rem; text-align: right; opacity: 0.7;">更新于一个普通的下午</p>
+  </div>
+
+  <!-- 最后一层额外留白 -->
+  <div style="text-align: center; margin-top: 0.5rem; font-size: 0.8rem; color: #98aebb; letter-spacing: 0.5px;">
+    —— 仅作为日常参考 ——
+  </div>
+</div>
+</body>
+</html>
